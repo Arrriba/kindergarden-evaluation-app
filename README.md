@@ -1,1 +1,1 @@
-# kindergarden-evaluation-app
+# kindergarten-evaluation-app
