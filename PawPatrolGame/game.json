@@ -154,6 +154,15 @@
         "name": "..\\resources\\login\\8.png",
         "smoothed": true,
         "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "../resources/login/text-background.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "..\\resources\\login\\text-background.png",
+        "smoothed": true,
+        "userAdded": false
       }
     ],
     "resourceFolders": []
@@ -466,7 +475,7 @@
         "gridWidth": 32,
         "snap": true,
         "windowMask": false,
-        "zoomFactor": 0.22499999999999956
+        "zoomFactor": 0.24999999999999947
       },
       "objectsGroups": [],
       "variables": [],
@@ -1204,7 +1213,7 @@
         "gridWidth": 32,
         "snap": true,
         "windowMask": false,
-        "zoomFactor": 0.3500000000000001
+        "zoomFactor": 0.17500000000000024
       },
       "objectsGroups": [],
       "variables": [],
@@ -1212,14 +1221,14 @@
         {
           "angle": 0,
           "customSize": true,
-          "height": 1442,
+          "height": 1730,
           "layer": "",
           "locked": false,
           "name": "Wallpaper",
           "persistentUuid": "76ebe3a9-5883-4fae-8b54-6b6ff9ad4057",
-          "width": 2564,
-          "x": 0,
-          "y": -1,
+          "width": 3083,
+          "x": -278,
+          "y": -161,
           "zOrder": 1,
           "numberProperties": [],
           "stringProperties": [],
@@ -1258,6 +1267,38 @@
           "width": 0,
           "x": 1226,
           "y": 716,
+          "zOrder": 3,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "height": 115,
+          "layer": "",
+          "locked": false,
+          "name": "Username",
+          "persistentUuid": "ebe9b0c1-7736-42b2-a069-9678c8d73d03",
+          "width": 1069,
+          "x": 819,
+          "y": 803,
+          "zOrder": 5,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "height": 112,
+          "layer": "",
+          "locked": false,
+          "name": "TextBackground",
+          "persistentUuid": "fe7b43c8-c080-4daf-ae0b-58ff6b6ad696",
+          "width": 1084,
+          "x": 793,
+          "y": 803,
           "zOrder": 3,
           "numberProperties": [],
           "stringProperties": [],
@@ -1325,6 +1366,64 @@
           "type": "TextEntryObject::TextEntry",
           "variables": [],
           "behaviors": []
+        },
+        {
+          "bold": false,
+          "italic": false,
+          "name": "Username",
+          "smoothed": true,
+          "tags": "",
+          "type": "TextObject::Text",
+          "underlined": false,
+          "variables": [],
+          "behaviors": [],
+          "string": "Introduce numele aici",
+          "font": "",
+          "characterSize": 80,
+          "color": {
+            "b": 0,
+            "g": 0,
+            "r": 0
+          }
+        },
+        {
+          "name": "TextBackground",
+          "tags": "",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "behaviors": [],
+          "animations": [
+            {
+              "name": "",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "..\\resources\\login\\text-background.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ],
       "events": [
@@ -1706,6 +1805,27 @@
               "events": []
             }
           ]
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "TextObject::String"
+              },
+              "parameters": [
+                "Username",
+                "=",
+                "ChildNameInput.String()"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
         }
       ],
       "layers": [
