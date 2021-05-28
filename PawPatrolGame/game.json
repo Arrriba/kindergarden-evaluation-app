@@ -244,6 +244,24 @@
         "name": "good (2).png",
         "smoothed": true,
         "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "forestbck.jpg",
+        "kind": "image",
+        "metadata": "",
+        "name": "forestbck.jpg",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "forestbkg2.jpg",
+        "kind": "image",
+        "metadata": "",
+        "name": "forestbkg2.jpg",
+        "smoothed": true,
+        "userAdded": true
       }
     ],
     "resourceFolders": []
@@ -5647,8 +5665,8 @@
           "name": "Wallpaper",
           "rightMargin": 0,
           "tags": "",
-          "texture": "..\\resources\\wallpaper.jpg",
-          "tiled": true,
+          "texture": "forestbkg2.jpg",
+          "tiled": false,
           "topMargin": 0,
           "type": "PanelSpriteObject::PanelSprite",
           "width": 30,
