@@ -15238,17 +15238,6 @@
                 ""
               ],
               "subInstructions": []
-            },
-            {
-              "type": {
-                "inverted": false,
-                "value": "SetSceneVariableAsBoolean"
-              },
-              "parameters": [
-                "\"solved\"",
-                "True"
-              ],
-              "subInstructions": []
             }
           ],
           "events": []
@@ -15273,11 +15262,10 @@
             {
               "type": {
                 "inverted": false,
-                "value": "SceneVariableAsBoolean"
+                "value": "Visible"
               },
               "parameters": [
-                "\"solved\"",
-                "True"
+                "correct_ans"
               ],
               "subInstructions": []
             }
