@@ -1322,6 +1322,24 @@
         "name": "..\\resources\\select-bar.png",
         "smoothed": true,
         "userAdded": true
+      },
+      {
+        "file": "../resources/audio/audio4_animalHouse.wav",
+        "kind": "audio",
+        "metadata": "",
+        "name": "..\\resources\\audio\\audio4_animalHouse.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
+        "userAdded": true
+      },
+      {
+        "file": "../resources/audio/audio_feedbackPozitiv.wav",
+        "kind": "audio",
+        "metadata": "",
+        "name": "..\\resources\\audio\\audio_feedbackPozitiv.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
+        "userAdded": true
       }
     ],
     "resourceFolders": []
@@ -3587,7 +3605,7 @@
         "gridWidth": 32,
         "snap": false,
         "windowMask": false,
-        "zoomFactor": 0.30000000000000027
+        "zoomFactor": 0.24166666870117207
       },
       "objectsGroups": [],
       "variables": [],
@@ -4221,8 +4239,8 @@
               "parameters": [
                 "",
                 "HouseSelectBar",
-                "chickenCoop.X()",
-                "chickenCoop.Y()",
+                "chickenCoop.X() + 5",
+                "chickenCoop.Y() + 400",
                 ""
               ],
               "subInstructions": []
@@ -4236,7 +4254,22 @@
                 "",
                 "AnimalSelectBar",
                 "dog.X()",
-                "dog.Y()",
+                "dog.Y() + 150",
+                ""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "PlayMusicCanal"
+              },
+              "parameters": [
+                "",
+                "..\\resources\\audio\\audio4_animalHouse.wav",
+                "0",
+                "",
+                "100",
                 ""
               ],
               "subInstructions": []
@@ -4247,7 +4280,7 @@
                 "value": "ModVarScene"
               },
               "parameters": [
-                "house",
+                "animal",
                 "=",
                 "0"
               ],
@@ -4259,7 +4292,7 @@
                 "value": "ModVarScene"
               },
               "parameters": [
-                "\"animal\"",
+                "house",
                 "=",
                 "0"
               ],
@@ -4613,6 +4646,126 @@
             {
               "type": {
                 "inverted": false,
+                "value": "VarScene"
+              },
+              "parameters": [
+                "animal",
+                "=",
+                "0"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "VarScene"
+              },
+              "parameters": [
+                "house",
+                "=",
+                "0"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "Cache"
+              },
+              "parameters": [
+                "AnimalSelectBar"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "Cache"
+              },
+              "parameters": [
+                "HouseSelectBar"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": true,
+                "value": "VarScene"
+              },
+              "parameters": [
+                "animal",
+                "=",
+                "0"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "Montre"
+              },
+              "parameters": [
+                "AnimalSelectBar",
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": true,
+                "value": "VarScene"
+              },
+              "parameters": [
+                "house",
+                "=",
+                "0"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "Montre"
+              },
+              "parameters": [
+                "HouseSelectBar",
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
                 "value": "Opacity"
               },
               "parameters": [
@@ -4692,7 +4845,7 @@
                     "value": "ModVarScene"
                   },
                   "parameters": [
-                    "\"animal\"",
+                    "animal",
                     "=",
                     "1"
                   ],
@@ -4754,6 +4907,21 @@
                         "dog"
                       ],
                       "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "PlayMusicCanal"
+                      },
+                      "parameters": [
+                        "",
+                        "..\\resources\\audio\\audio_feedbackPozitiv.wav",
+                        "0",
+                        "",
+                        "100",
+                        ""
+                      ],
+                      "subInstructions": []
                     }
                   ],
                   "events": []
@@ -4807,9 +4975,9 @@
                   },
                   "parameters": [
                     "HouseSelectBar",
-                    "",
+                    "Tween",
                     "\"HouseSelection\"",
-                    "dogHouse.X()",
+                    "1900",
                     "\"easeInOutQuart\"",
                     "500",
                     ""
@@ -4856,6 +5024,21 @@
                         "dog"
                       ],
                       "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "PlayMusicCanal"
+                      },
+                      "parameters": [
+                        "",
+                        "..\\resources\\audio\\audio_feedbackPozitiv.wav",
+                        "0",
+                        "",
+                        "100",
+                        ""
+                      ],
+                      "subInstructions": []
                     }
                   ],
                   "events": []
@@ -4896,7 +5079,7 @@
                     "value": "ModVarScene"
                   },
                   "parameters": [
-                    "\"animal\"",
+                    "animal",
                     "=",
                     "3"
                   ],
@@ -4958,6 +5141,21 @@
                         "chickenCoop"
                       ],
                       "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "PlayMusicCanal"
+                      },
+                      "parameters": [
+                        "",
+                        "..\\resources\\audio\\audio_feedbackPozitiv.wav",
+                        "0",
+                        "",
+                        "100",
+                        ""
+                      ],
+                      "subInstructions": []
                     }
                   ],
                   "events": []
@@ -5011,9 +5209,9 @@
                   },
                   "parameters": [
                     "HouseSelectBar",
-                    "",
+                    "Tween",
                     "\"HouseSelection\"",
-                    "chickenCoop.X()",
+                    "530",
                     "\"easeInOutQuart\"",
                     "500",
                     ""
@@ -5060,6 +5258,21 @@
                         "hen"
                       ],
                       "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "PlayMusicCanal"
+                      },
+                      "parameters": [
+                        "",
+                        "..\\resources\\audio\\audio_feedbackPozitiv.wav",
+                        "0",
+                        "",
+                        "100",
+                        ""
+                      ],
+                      "subInstructions": []
                     }
                   ],
                   "events": []
@@ -5100,7 +5313,7 @@
                     "value": "ModVarScene"
                   },
                   "parameters": [
-                    "\"animal\"",
+                    "animal",
                     "=",
                     "5"
                   ],
@@ -5162,6 +5375,21 @@
                         "barn"
                       ],
                       "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "PlayMusicCanal"
+                      },
+                      "parameters": [
+                        "",
+                        "..\\resources\\audio\\audio_feedbackPozitiv.wav",
+                        "0",
+                        "",
+                        "100",
+                        ""
+                      ],
+                      "subInstructions": []
                     }
                   ],
                   "events": []
@@ -5215,9 +5443,9 @@
                   },
                   "parameters": [
                     "HouseSelectBar",
-                    "",
+                    "Tween",
                     "\"HouseSelection\"",
-                    "barn.X()",
+                    "1230",
                     "\"easeInOutQuart\"",
                     "500",
                     ""
@@ -5264,6 +5492,21 @@
                         "cow"
                       ],
                       "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "PlayMusicCanal"
+                      },
+                      "parameters": [
+                        "",
+                        "..\\resources\\audio\\audio_feedbackPozitiv.wav",
+                        "0",
+                        "",
+                        "100",
+                        ""
+                      ],
+                      "subInstructions": []
                     }
                   ],
                   "events": []
@@ -5271,6 +5514,57 @@
               ]
             }
           ]
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": true,
+                "value": "Visible"
+              },
+              "parameters": [
+                "dog"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": true,
+                "value": "Visible"
+              },
+              "parameters": [
+                "hen"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": true,
+                "value": "Visible"
+              },
+              "parameters": [
+                "cow"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "PushScene"
+              },
+              "parameters": [
+                "",
+                "\"Ghiocei\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
         }
       ],
       "layers": [
