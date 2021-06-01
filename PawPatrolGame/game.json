@@ -9523,7 +9523,7 @@
               "parameters": [
                 "Username",
                 "=",
-                "\"Numele tau este: \" + ChildNameInput.String()"
+                "\"Numele tău este: \" + ChildNameInput.String()"
               ],
               "subInstructions": []
             }
