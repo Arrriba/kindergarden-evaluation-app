@@ -9235,6 +9235,30 @@
                 "HitBox"
               ],
               "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarGlobalTxt"
+              },
+              "parameters": [
+                "gameResult",
+                "=",
+                "\"\""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarSceneTxt"
+              },
+              "parameters": [
+                "toSaveResult",
+                "=",
+                "\"\""
+              ],
+              "subInstructions": []
             }
           ],
           "events": [
@@ -9707,16 +9731,59 @@
             {
               "type": {
                 "inverted": false,
-                "value": "PushScene"
+                "value": "ModVarSceneTxt"
               },
               "parameters": [
-                "",
-                "\"Intro\""
+                "username",
+                "=",
+                "ChildNameInput.String()"
               ],
               "subInstructions": []
             }
           ],
-          "events": []
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::JsCode",
+              "inlineCode": "runtimeScene.setBackgroundColor(100,100,240);\n\nconst variables = runtimeScene.getVariables();\nconst toSaveResult = variables.get(\"toSaveResult\");\n\nconst name = variables.get(\"username\")._str;\nconst dog = variables.get(\"Character\")._str;\nlet dogName = \"\"; \n\nswitch (dog) {\n    case \"0\": \n        dogName = \"Niciun catel ales\";\n        break;\n    case \"1\":\n        dogName = \"Rocky\";\n        break;\n    case \"2\":\n        dogName = \"Marshall\";\n        break;\n    case \"3\":\n        dogName = \"Chase\";\n        break;\n    case \"4\":\n        dogName = \"Everest\";\n        break;\n    case \"5\":\n        dogName = \"Rubble\";\n        break;\n    case \"6\":\n        dogName = \"Skye\";\n    case \"7\":\n        dogName = \"Zuma\";\n        break;\n}\n\nconst gameResult = variables.get(\"gameResult\");\ntoSaveResult.setString(name + \",\" + dogName);\ngameResult.concatenate(name + \",\" + dogName);\n",
+              "parameterObjects": "",
+              "useStrict": true,
+              "eventsSheetExpanded": false
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "FileSystem::SaveStringToFileSync"
+                  },
+                  "parameters": [
+                    "VariableString(toSaveResult)",
+                    "FileSystem::ExecutablePath() + \"rezultat.csv\"",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "PushScene"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Intro\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ]
         }
       ],
       "layers": [
