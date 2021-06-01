@@ -1465,7 +1465,6 @@
         "name": "..\\resources\\audio\\audio_feedbackPozitiv.wav",
         "preloadAsMusic": false,
         "preloadAsSound": false,
-        "smoothed": true,
         "userAdded": false
       },
       {
@@ -1599,6 +1598,51 @@
         "kind": "audio",
         "metadata": "",
         "name": "..\\resources\\audio\\audio11_squirrels.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "../resources/intro-background.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "..\\resources\\intro-background.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "../resources/arrow-running.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "..\\resources\\arrow-running.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "file": "../resources/audio/audio2.wav",
+        "kind": "audio",
+        "metadata": "",
+        "name": "..\\resources\\audio\\audio2.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
+        "userAdded": true
+      },
+      {
+        "file": "../resources/audio/audio3.wav",
+        "kind": "audio",
+        "metadata": "",
+        "name": "..\\resources\\audio\\audio3.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
+        "userAdded": true
+      },
+      {
+        "file": "../resources/audio/audio1.wav",
+        "kind": "audio",
+        "metadata": "",
+        "name": "..\\resources\\audio\\audio1.wav",
         "preloadAsMusic": false,
         "preloadAsSound": false,
         "userAdded": true
@@ -2062,6 +2106,22 @@
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "height": 154,
+          "layer": "",
+          "locked": false,
+          "name": "TextBackground",
+          "persistentUuid": "1c4cdbba-852d-4251-9fef-01c834dbfea9",
+          "width": 828,
+          "x": 1008,
+          "y": 1171,
+          "zOrder": 1,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
         }
       ],
       "objects": [
@@ -2098,6 +2158,45 @@
             "g": 0,
             "r": 0
           }
+        },
+        {
+          "name": "TextBackground",
+          "tags": "",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "behaviors": [],
+          "animations": [
+            {
+              "name": "",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "..\\resources\\login\\text-background.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ],
       "events": [
@@ -2598,16 +2697,49 @@
               "subInstructions": []
             }
           ],
-          "events": [
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
             {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [],
-              "events": []
+              "type": {
+                "inverted": false,
+                "value": "DepartScene"
+              },
+              "parameters": [
+                ""
+              ],
+              "subInstructions": []
             }
-          ]
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "PlayMusic"
+              },
+              "parameters": [
+                "",
+                "..\\resources\\audio\\audio1.wav",
+                "no",
+                "70",
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": []
         }
       ],
       "layers": [
@@ -3486,27 +3618,11 @@
         "gridWidth": 32,
         "snap": true,
         "windowMask": false,
-        "zoomFactor": 0.17500000000000024
+        "zoomFactor": 0.3500000000000003
       },
       "objectsGroups": [],
       "variables": [],
       "instances": [
-        {
-          "angle": 0,
-          "customSize": true,
-          "height": 1730,
-          "layer": "",
-          "locked": false,
-          "name": "Wallpaper",
-          "persistentUuid": "76ebe3a9-5883-4fae-8b54-6b6ff9ad4057",
-          "width": 3083,
-          "x": -278,
-          "y": -161,
-          "zOrder": 1,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
         {
           "angle": 0,
           "customSize": true,
@@ -3528,24 +3644,41 @@
               "value": ""
             }
           ]
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "height": 1809,
+          "layer": "",
+          "locked": false,
+          "name": "Background",
+          "persistentUuid": "d1225101-f30d-49cb-9b57-646a06b02f41",
+          "width": 2577,
+          "x": -3,
+          "y": -366,
+          "zOrder": 0,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "height": 284,
+          "layer": "",
+          "locked": false,
+          "name": "NextArrow",
+          "persistentUuid": "2ad43bbf-695b-42d7-beee-9dceda505db9",
+          "width": 372,
+          "x": 2158,
+          "y": 19,
+          "zOrder": 3,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
         }
       ],
       "objects": [
-        {
-          "bottomMargin": 0,
-          "height": 30,
-          "leftMargin": 0,
-          "name": "Wallpaper",
-          "rightMargin": 0,
-          "tags": "",
-          "texture": "..\\resources\\wallpaper.jpg",
-          "tiled": true,
-          "topMargin": 0,
-          "type": "PanelSpriteObject::PanelSprite",
-          "width": 30,
-          "variables": [],
-          "behaviors": []
-        },
         {
           "name": "HitBox",
           "tags": "",
@@ -3586,23 +3719,82 @@
           ]
         },
         {
-          "bold": false,
-          "italic": false,
-          "name": "test",
-          "smoothed": true,
+          "name": "Background",
           "tags": "",
-          "type": "TextObject::Text",
-          "underlined": false,
+          "type": "Sprite",
+          "updateIfNotVisible": false,
           "variables": [],
           "behaviors": [],
-          "string": "INTRO SCENE",
-          "font": "",
-          "characterSize": 80,
-          "color": {
-            "b": 0,
-            "g": 0,
-            "r": 0
-          }
+          "animations": [
+            {
+              "name": "",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "..\\resources\\intro-background.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "NextArrow",
+          "tags": "",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "behaviors": [],
+          "animations": [
+            {
+              "name": "",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "..\\resources\\arrow-running.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ],
       "events": [
@@ -3642,6 +3834,16 @@
               },
               "parameters": [
                 "HitBox"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "Cache"
+              },
+              "parameters": [
+                "NextArrow"
               ],
               "subInstructions": []
             }
@@ -3982,8 +4184,203 @@
                 }
               ],
               "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "PlayMusicCanal"
+                  },
+                  "parameters": [
+                    "",
+                    "..\\resources\\audio\\audio2.wav",
+                    "1",
+                    "",
+                    "100",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ResetTimer"
+                  },
+                  "parameters": [
+                    "",
+                    "\"audio1\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
             }
           ]
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "Timer"
+              },
+              "parameters": [
+                "",
+                "6",
+                "\"audio1\""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": [],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "PlayMusicCanal"
+              },
+              "parameters": [
+                "",
+                "..\\resources\\audio\\audio3.wav",
+                "1",
+                "no",
+                "100",
+                ""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ResetTimer"
+              },
+              "parameters": [
+                "",
+                "\"audio2\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "Timer"
+              },
+              "parameters": [
+                "",
+                "7",
+                "\"audio2\""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": [],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "Montre"
+              },
+              "parameters": [
+                "NextArrow",
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "SourisSurObjet"
+              },
+              "parameters": [
+                "NextArrow",
+                "",
+                "",
+                ""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "MouseButtonPressed"
+              },
+              "parameters": [
+                "",
+                "Left"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "Visible"
+              },
+              "parameters": [
+                "NextArrow"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": [],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "PushScene"
+              },
+              "parameters": [
+                "",
+                "\"AnimalHouse\""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
         },
         {
           "disabled": false,
