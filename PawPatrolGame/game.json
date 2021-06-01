@@ -1339,6 +1339,16 @@
         "name": "..\\resources\\audio\\audio_feedbackPozitiv.wav",
         "preloadAsMusic": false,
         "preloadAsSound": false,
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "start-button.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "start-button.png",
+        "smoothed": true,
         "userAdded": true
       }
     ],
@@ -2402,7 +2412,13 @@
         "zoomFactor": 0.17500000000000024
       },
       "objectsGroups": [],
-      "variables": [],
+      "variables": [
+        {
+          "name": "username_in",
+          "type": "boolean",
+          "value": false
+        }
+      ],
       "instances": [
         {
           "angle": 0,
@@ -2467,8 +2483,8 @@
           "name": "Username",
           "persistentUuid": "ebe9b0c1-7736-42b2-a069-9678c8d73d03",
           "width": 1069,
-          "x": 819,
-          "y": 803,
+          "x": 796,
+          "y": 698,
           "zOrder": 5,
           "numberProperties": [],
           "stringProperties": [],
@@ -2483,9 +2499,25 @@
           "name": "TextBackground",
           "persistentUuid": "fe7b43c8-c080-4daf-ae0b-58ff6b6ad696",
           "width": 1084,
-          "x": 793,
-          "y": 803,
+          "x": 784,
+          "y": 693,
           "zOrder": 3,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "height": 476,
+          "layer": "",
+          "locked": false,
+          "name": "start_btn",
+          "persistentUuid": "721f3717-34c1-45e0-bff9-4ecb7491a45c",
+          "width": 522,
+          "x": 1021,
+          "y": 879,
+          "zOrder": 6,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
@@ -2563,7 +2595,7 @@
           "underlined": false,
           "variables": [],
           "behaviors": [],
-          "string": "Introduce numele aici",
+          "string": "Username",
           "font": "",
           "characterSize": 80,
           "color": {
@@ -2591,6 +2623,45 @@
                     {
                       "hasCustomCollisionMask": false,
                       "image": "..\\resources\\login\\text-background.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "start_btn",
+          "tags": "",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "behaviors": [],
+          "animations": [
+            {
+              "name": "",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "start-button.png",
                       "points": [],
                       "originPoint": {
                         "name": "origine",
@@ -3006,7 +3077,105 @@
               "parameters": [
                 "Username",
                 "=",
-                "ChildNameInput.String()"
+                "\"Numele tau este: \" + ChildNameInput.String()"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "TextEntryObject::String"
+              },
+              "parameters": [
+                "ChildNameInput",
+                ">",
+                "\"Numele tau este: \""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarScene"
+              },
+              "parameters": [
+                "username_in",
+                "=",
+                "1"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "SceneVariableAsBoolean"
+              },
+              "parameters": [
+                "username_in",
+                "True"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "SourisSurObjet"
+              },
+              "parameters": [
+                "start_btn",
+                "",
+                "",
+                ""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "MouseButtonPressed"
+              },
+              "parameters": [
+                "",
+                "Left"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": [],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "PushScene"
+              },
+              "parameters": [
+                "",
+                "\"Intro\""
               ],
               "subInstructions": []
             }
@@ -3163,6 +3332,25 @@
               ]
             }
           ]
+        },
+        {
+          "bold": false,
+          "italic": false,
+          "name": "test",
+          "smoothed": true,
+          "tags": "",
+          "type": "TextObject::Text",
+          "underlined": false,
+          "variables": [],
+          "behaviors": [],
+          "string": "INTRO SCENE",
+          "font": "",
+          "characterSize": 80,
+          "color": {
+            "b": 0,
+            "g": 0,
+            "r": 0
+          }
         }
       ],
       "events": [
