@@ -7676,6 +7676,15 @@
         "preloadAsMusic": false,
         "preloadAsSound": false,
         "userAdded": false
+      },
+      {
+        "file": "audio2_1_enterNameAndStart.wav",
+        "kind": "audio",
+        "metadata": "",
+        "name": "audio2_1_enterNameAndStart.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
+        "userAdded": true
       }
     ],
     "resourceFolders": []
@@ -9469,6 +9478,29 @@
                     "Character_7",
                     "/",
                     "2"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "PlayMusic"
+                  },
+                  "parameters": [
+                    "",
+                    "audio2_1_enterNameAndStart.wav",
+                    "",
+                    "100",
+                    ""
                   ],
                   "subInstructions": []
                 }
