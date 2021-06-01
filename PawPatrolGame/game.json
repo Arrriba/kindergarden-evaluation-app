@@ -7748,6 +7748,33 @@
         "name": "ghiocei-background.png",
         "smoothed": true,
         "userAdded": true
+      },
+      {
+        "file": "audio12_stars.wav",
+        "kind": "audio",
+        "metadata": "",
+        "name": "audio12_stars.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
+        "userAdded": true
+      },
+      {
+        "file": "audio_feedbackPozitiv5.wav",
+        "kind": "audio",
+        "metadata": "",
+        "name": "audio_feedbackPozitiv5.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
+        "userAdded": true
+      },
+      {
+        "file": "audio_feedbackNegativ5.wav",
+        "kind": "audio",
+        "metadata": "",
+        "name": "audio_feedbackNegativ5.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
+        "userAdded": true
       }
     ],
     "resourceFolders": []
@@ -31834,6 +31861,51 @@
                 }
               ],
               "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "PlayMusic"
+                  },
+                  "parameters": [
+                    "",
+                    "audio12_stars.wav",
+                    "",
+                    "100",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ResetTimer"
+                  },
+                  "parameters": [
+                    "",
+                    "\"intro-audio\""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ResetTimer"
+                  },
+                  "parameters": [
+                    "",
+                    "\"feedback-audio\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
             }
           ]
         },
@@ -31842,6 +31914,30 @@
           "folded": false,
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "Timer"
+              },
+              "parameters": [
+                "",
+                "19",
+                "\"intro-audio\""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "Timer"
+              },
+              "parameters": [
+                "",
+                "5",
+                "\"intro-audio\""
+              ],
+              "subInstructions": []
+            },
             {
               "type": {
                 "inverted": false,
@@ -31908,6 +32004,20 @@
                 {
                   "type": {
                     "inverted": false,
+                    "value": "PlayMusic"
+                  },
+                  "parameters": [
+                    "",
+                    "audio_feedbackPozitiv5.wav",
+                    "",
+                    "",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
                     "value": "ResetTimer"
                   },
                   "parameters": [
@@ -31959,6 +32069,20 @@
                 }
               ],
               "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "PlayMusic"
+                  },
+                  "parameters": [
+                    "",
+                    "audio_feedbackNegativ5.wav",
+                    "",
+                    "",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
                 {
                   "type": {
                     "inverted": false,
@@ -32135,7 +32259,7 @@
               },
               "parameters": [
                 "",
-                "3",
+                "5",
                 "\"GoToNextScene\""
               ],
               "subInstructions": []
