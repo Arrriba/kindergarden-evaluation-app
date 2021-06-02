@@ -9325,7 +9325,7 @@
                   },
                   "parameters": [
                     "loadedText",
-                    "FileSystem::ExecutablePath() + \"rezultat.csv\"",
+                    "FileSystem::ExecutableFolderPath() + \"/rezultat.csv\"",
                     ""
                   ],
                   "subInstructions": []
@@ -9841,7 +9841,7 @@
               "disabled": false,
               "folded": false,
               "type": "BuiltinCommonInstructions::JsCode",
-              "inlineCode": "runtimeScene.setBackgroundColor(100,100,240);\n\nconst variables = runtimeScene.getVariables();\nconst toSaveResult = variables.get(\"toSaveResult\");\n\nconst loadedText = variables.get(\"loadedText\");\n\nif (loadedText._str === \"0\") {\n    loadedText.setString(\"Nume,Prenume,Catelus,Adapostul animalelor,Numara ghioceii,Momentele zilei,Ghcitoare despre anotimpuri,Comportament in padure,Gaseste veverita,Forme geometrice pe cer\");\n}\n\nconst name = variables.get(\"username\")._str;\nconst dog = variables.get(\"characterNumber\")._str;\nlet dogName = \"\"; \n\nswitch (dog) {\n    case \"0\": \n        dogName = \"Niciun catel ales\";\n        break;\n    case \"1\":\n        dogName = \"Rocky\";\n        break;\n    case \"2\":\n        dogName = \"Marshall\";\n        break;\n    case \"3\":\n        dogName = \"Chase\";\n        break;\n    case \"4\":\n        dogName = \"Everest\";\n        break;\n    case \"5\":\n        dogName = \"Rubble\";\n        break;\n    case \"6\":\n        dogName = \"Skye\";\n    case \"7\":\n        dogName = \"Zuma\";\n        break;\n}\n\ntoSaveResult.setString(name + \",\" + dogName);\nloadedText.concatenate(\"\\r\\n\" + name + \",\" + dogName);\n",
+              "inlineCode": "runtimeScene.setBackgroundColor(100,100,240);\n\nconst variables = runtimeScene.getVariables();\nconst toSaveResult = variables.get(\"toSaveResult\");\n\nconst loadedText = variables.get(\"loadedText\");\n\nif (loadedText._str === \"0\") {\n    loadedText.setString(\"Nume,Catelus,Adapostul animalelor,Numara ghioceii,Momentele zilei,Ghcitoare despre anotimpuri,Comportament in padure,Gaseste veverita,Forme geometrice pe cer,Feedback\");\n}\n\nconst name = variables.get(\"username\")._str;\nconst dog = variables.get(\"characterNumber\")._str;\nlet dogName = \"\"; \n\nswitch (dog) {\n    case \"0\": \n        dogName = \"Niciun catel ales\";\n        break;\n    case \"1\":\n        dogName = \"Rocky\";\n        break;\n    case \"2\":\n        dogName = \"Marshall\";\n        break;\n    case \"3\":\n        dogName = \"Chase\";\n        break;\n    case \"4\":\n        dogName = \"Everest\";\n        break;\n    case \"5\":\n        dogName = \"Rubble\";\n        break;\n    case \"6\":\n        dogName = \"Skye\";\n    case \"7\":\n        dogName = \"Zuma\";\n        break;\n}\n\ntoSaveResult.setString(name + \",\" + dogName);\nloadedText.concatenate(\"\\r\\n\" + name + \",\" + dogName);\n",
               "parameterObjects": "",
               "useStrict": true,
               "eventsSheetExpanded": false
@@ -12783,7 +12783,7 @@
                   },
                   "parameters": [
                     "VariableString(loadedText)",
-                    "FileSystem::ExecutablePath() + \"rezultat.csv\"",
+                    "FileSystem::ExecutableFolderPath() + \"/rezultat.csv\"",
                     ""
                   ],
                   "subInstructions": []
@@ -14051,7 +14051,7 @@
                   },
                   "parameters": [
                     "VariableString(loadedText)",
-                    "FileSystem::ExecutablePath() + \"rezultat.csv\"",
+                    "FileSystem::ExecutableFolderPath() + \"/rezultat.csv\"",
                     ""
                   ],
                   "subInstructions": []
@@ -14068,14 +14068,6 @@
                   "subInstructions": []
                 }
               ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [],
               "events": []
             }
           ]
@@ -14132,7 +14124,7 @@
         "gridWidth": 32,
         "snap": true,
         "windowMask": false,
-        "zoomFactor": 0.30000000000000016
+        "zoomFactor": 0.10000000000000014
       },
       "objectsGroups": [],
       "variables": [],
@@ -16098,7 +16090,7 @@
                   },
                   "parameters": [
                     "VariableString(loadedText)",
-                    "FileSystem::ExecutablePath() + \"rezultat.csv\"",
+                    "FileSystem::ExecutableFolderPath() + \"/rezultat.csv\"",
                     ""
                   ],
                   "subInstructions": []
@@ -16171,7 +16163,7 @@
         "gridWidth": 32,
         "snap": true,
         "windowMask": false,
-        "zoomFactor": 0.2500000000000002
+        "zoomFactor": 0.07500000000000023
       },
       "objectsGroups": [],
       "variables": [],
@@ -27200,7 +27192,7 @@
                   },
                   "parameters": [
                     "VariableString(loadedText)",
-                    "FileSystem::ExecutablePath() + \"rezultat.csv\"",
+                    "FileSystem::ExecutableFolderPath() + \"/rezultat.csv\"",
                     ""
                   ],
                   "subInstructions": []
@@ -29860,7 +29852,7 @@
                   },
                   "parameters": [
                     "VariableString(loadedText)",
-                    "FileSystem::ExecutablePath() + \"rezultat.csv\"",
+                    "FileSystem::ExecutableFolderPath() + \"/rezultat.csv\"",
                     ""
                   ],
                   "subInstructions": []
@@ -31749,7 +31741,7 @@
                   },
                   "parameters": [
                     "VariableString(loadedText)",
-                    "FileSystem::ExecutablePath() + \"rezultat.csv\"",
+                    "FileSystem::ExecutableFolderPath() + \"/rezultat.csv\"",
                     ""
                   ],
                   "subInstructions": []
@@ -33150,7 +33142,7 @@
                   },
                   "parameters": [
                     "VariableString(loadedText)",
-                    "FileSystem::ExecutablePath() + \"rezultat.csv\"",
+                    "FileSystem::ExecutableFolderPath() + \"/rezultat.csv\"",
                     ""
                   ],
                   "subInstructions": []
@@ -33231,28 +33223,6 @@
         {
           "angle": 0,
           "customSize": true,
-          "height": 337,
-          "layer": "",
-          "locked": false,
-          "name": "HitBox",
-          "persistentUuid": "c4f15544-4cb0-4556-b615-6f82737deae8",
-          "width": 337,
-          "x": 27,
-          "y": 1041,
-          "zOrder": 2,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": [
-            {
-              "name": "Variable",
-              "type": "string",
-              "value": ""
-            }
-          ]
-        },
-        {
-          "angle": 0,
-          "customSize": true,
           "height": 1729,
           "layer": "",
           "locked": false,
@@ -33330,45 +33300,6 @@
           "width": 30,
           "variables": [],
           "behaviors": []
-        },
-        {
-          "name": "HitBox",
-          "tags": "",
-          "type": "Sprite",
-          "updateIfNotVisible": false,
-          "variables": [],
-          "behaviors": [],
-          "animations": [
-            {
-              "name": "NewObject",
-              "useMultipleDirections": false,
-              "directions": [
-                {
-                  "looping": false,
-                  "timeBetweenFrames": 0.07999999821186066,
-                  "sprites": [
-                    {
-                      "hasCustomCollisionMask": false,
-                      "image": "NewObject-1-0.png",
-                      "points": [],
-                      "originPoint": {
-                        "name": "origine",
-                        "x": 0,
-                        "y": 0
-                      },
-                      "centerPoint": {
-                        "automatic": true,
-                        "name": "centre",
-                        "x": 0,
-                        "y": 0
-                      },
-                      "customCollisionMask": []
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
         },
         {
           "name": "background",
@@ -33563,16 +33494,6 @@
                 "value": "Cache"
               },
               "parameters": [
-                "HitBox"
-              ],
-              "subInstructions": []
-            },
-            {
-              "type": {
-                "inverted": false,
-                "value": "Cache"
-              },
-              "parameters": [
                 "sad"
               ],
               "subInstructions": []
@@ -33603,342 +33524,6 @@
               "disabled": false,
               "folded": false,
               "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "VarGlobal"
-                  },
-                  "parameters": [
-                    "Character",
-                    "=",
-                    "1"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "Create"
-                  },
-                  "parameters": [
-                    "",
-                    "Character_1",
-                    "HitBox.X()",
-                    "HitBox.Y()",
-                    ""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ChangeScale"
-                  },
-                  "parameters": [
-                    "Character_1",
-                    "/",
-                    "2"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "VarGlobal"
-                  },
-                  "parameters": [
-                    "Character",
-                    "=",
-                    "2"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "Create"
-                  },
-                  "parameters": [
-                    "",
-                    "Character_2",
-                    "HitBox.X()",
-                    "HitBox.Y()",
-                    ""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ChangeScale"
-                  },
-                  "parameters": [
-                    "Character_2",
-                    "/",
-                    "2"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "VarGlobal"
-                  },
-                  "parameters": [
-                    "Character",
-                    "=",
-                    "3"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "Create"
-                  },
-                  "parameters": [
-                    "",
-                    "Character_3",
-                    "HitBox.X()",
-                    "HitBox.Y()",
-                    ""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ChangeScale"
-                  },
-                  "parameters": [
-                    "Character_3",
-                    "/",
-                    "2"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "VarGlobal"
-                  },
-                  "parameters": [
-                    "Character",
-                    "=",
-                    "4"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "Create"
-                  },
-                  "parameters": [
-                    "",
-                    "Character_4",
-                    "HitBox.X()",
-                    "HitBox.Y()",
-                    ""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ChangeScale"
-                  },
-                  "parameters": [
-                    "Character_4",
-                    "/",
-                    "2"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "VarGlobal"
-                  },
-                  "parameters": [
-                    "Character",
-                    "=",
-                    "5"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "Create"
-                  },
-                  "parameters": [
-                    "",
-                    "Character_5",
-                    "HitBox.X()",
-                    "HitBox.Y()",
-                    ""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ChangeScale"
-                  },
-                  "parameters": [
-                    "Character_5",
-                    "/",
-                    "2"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "VarGlobal"
-                  },
-                  "parameters": [
-                    "Character",
-                    "=",
-                    "6"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "Create"
-                  },
-                  "parameters": [
-                    "",
-                    "Character_6",
-                    "HitBox.X()",
-                    "HitBox.Y()",
-                    ""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ChangeScale"
-                  },
-                  "parameters": [
-                    "Character_6",
-                    "/",
-                    "2"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "VarGlobal"
-                  },
-                  "parameters": [
-                    "Character",
-                    "=",
-                    "7"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "Create"
-                  },
-                  "parameters": [
-                    "",
-                    "Character_7",
-                    "HitBox.X()",
-                    "HitBox.Y()",
-                    ""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ChangeScale"
-                  },
-                  "parameters": [
-                    "Character_7",
-                    "/",
-                    "2"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
               "conditions": [],
               "actions": [
                 {
@@ -33963,6 +33548,27 @@
                   "parameters": [
                     "",
                     "\"intro-audio\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarSceneTxt"
+                  },
+                  "parameters": [
+                    "loadedText",
+                    "=",
+                    "GlobalVariableString(gameResult)"
                   ],
                   "subInstructions": []
                 }
@@ -34076,20 +33682,41 @@
               "subInstructions": []
             }
           ],
-          "actions": [
+          "actions": [],
+          "events": [
             {
-              "type": {
-                "inverted": false,
-                "value": "PushScene"
-              },
-              "parameters": [
-                "",
-                "\"Outro\""
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "FileSystem::SaveStringToFileSync"
+                  },
+                  "parameters": [
+                    "GlobalVariableString(gameResult) + \",fericit\"",
+                    "FileSystem::ExecutableFolderPath() + \"/rezultat.csv\"",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "PushScene"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Outro\""
+                  ],
+                  "subInstructions": []
+                }
               ],
-              "subInstructions": []
+              "events": []
             }
-          ],
-          "events": []
+          ]
         },
         {
           "disabled": false,
@@ -34141,20 +33768,41 @@
               "subInstructions": []
             }
           ],
-          "actions": [
+          "actions": [],
+          "events": [
             {
-              "type": {
-                "inverted": false,
-                "value": "PushScene"
-              },
-              "parameters": [
-                "",
-                "\"Outro\""
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "FileSystem::SaveStringToFileSync"
+                  },
+                  "parameters": [
+                    "GlobalVariableString(gameResult) + \",trist\"",
+                    "FileSystem::ExecutableFolderPath() + \"/rezultat.csv\"",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "PushScene"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Outro\""
+                  ],
+                  "subInstructions": []
+                }
               ],
-              "subInstructions": []
+              "events": []
             }
-          ],
-          "events": []
+          ]
         },
         {
           "disabled": false,
@@ -34207,6 +33855,18 @@
             }
           ],
           "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "FileSystem::SaveStringToFileSync"
+              },
+              "parameters": [
+                "GlobalVariableString(gameResult) + \",neutru\"",
+                "FileSystem::ExecutableFolderPath() + \"/rezultat.csv\"",
+                ""
+              ],
+              "subInstructions": []
+            },
             {
               "type": {
                 "inverted": false,
