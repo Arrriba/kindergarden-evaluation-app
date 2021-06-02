@@ -8930,6 +8930,11 @@
           "name": "username_in",
           "type": "boolean",
           "value": false
+        },
+        {
+          "name": "loadedText",
+          "type": "string",
+          "value": ""
         }
       ],
       "instances": [
@@ -9235,9 +9240,78 @@
                 "HitBox"
               ],
               "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarGlobalTxt"
+              },
+              "parameters": [
+                "gameResult",
+                "=",
+                "\"\""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarSceneTxt"
+              },
+              "parameters": [
+                "toSaveResult",
+                "=",
+                "\"\""
+              ],
+              "subInstructions": []
             }
           ],
           "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "FileSystem::LoadStringFromFileSync"
+                  },
+                  "parameters": [
+                    "loadedText",
+                    "FileSystem::ExecutablePath() + \"rezultat.csv\"",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarGlobalTxt"
+                  },
+                  "parameters": [
+                    "gameResult",
+                    "=",
+                    "VariableString(loadedText)"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarSceneTxt"
+                  },
+                  "parameters": [
+                    "characterNumber",
+                    "=",
+                    "GlobalVariableString(Character)"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
             {
               "disabled": false,
               "folded": false,
@@ -9707,16 +9781,71 @@
             {
               "type": {
                 "inverted": false,
-                "value": "PushScene"
+                "value": "ModVarSceneTxt"
               },
               "parameters": [
-                "",
-                "\"Intro\""
+                "username",
+                "=",
+                "ChildNameInput.String()"
               ],
               "subInstructions": []
             }
           ],
-          "events": []
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::JsCode",
+              "inlineCode": "runtimeScene.setBackgroundColor(100,100,240);\n\nconst variables = runtimeScene.getVariables();\nconst toSaveResult = variables.get(\"toSaveResult\");\n\nconst loadedText = variables.get(\"loadedText\");\n\nif (loadedText._str === \"0\") {\n    loadedText.setString(\"Nume,Prenume,Catelus,Adapostul animalelor,Numara ghioceii,Momentele zilei,Ghcitoare despre anotimpuri,Comportament in padure,Gaseste veverita,Forme geometrice pe cer\");\n}\n\nconst name = variables.get(\"username\")._str;\nconst dog = variables.get(\"characterNumber\")._str;\nlet dogName = \"\"; \n\nswitch (dog) {\n    case \"0\": \n        dogName = \"Niciun catel ales\";\n        break;\n    case \"1\":\n        dogName = \"Rocky\";\n        break;\n    case \"2\":\n        dogName = \"Marshall\";\n        break;\n    case \"3\":\n        dogName = \"Chase\";\n        break;\n    case \"4\":\n        dogName = \"Everest\";\n        break;\n    case \"5\":\n        dogName = \"Rubble\";\n        break;\n    case \"6\":\n        dogName = \"Skye\";\n    case \"7\":\n        dogName = \"Zuma\";\n        break;\n}\n\ntoSaveResult.setString(name + \",\" + dogName);\nloadedText.concatenate(\"\\r\\n\" + name + \",\" + dogName);\n",
+              "parameterObjects": "",
+              "useStrict": true,
+              "eventsSheetExpanded": false
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarGlobalTxt"
+                  },
+                  "parameters": [
+                    "gameResult",
+                    "=",
+                    "VariableString(loadedText)"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "FileSystem::SaveStringToFileSync"
+                  },
+                  "parameters": [
+                    "VariableString(loadedText)",
+                    "FileSystem::ExecutableFolderPath() + \"/rezultat.csv\"",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "PushScene"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Intro\""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ]
         }
       ],
       "layers": [
@@ -11183,7 +11312,7 @@
       "events": [
         {
           "disabled": false,
-          "folded": true,
+          "folded": false,
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -11619,6 +11748,39 @@
                     "Character_7",
                     "/",
                     "2"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarScene"
+                  },
+                  "parameters": [
+                    "score",
+                    "=",
+                    "3"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarSceneTxt"
+                  },
+                  "parameters": [
+                    "loadedText",
+                    "=",
+                    "GlobalVariableString(gameResult)"
                   ],
                   "subInstructions": []
                 }
@@ -12540,20 +12702,62 @@
               "subInstructions": []
             }
           ],
-          "actions": [
+          "actions": [],
+          "events": [
             {
-              "type": {
-                "inverted": false,
-                "value": "PushScene"
-              },
-              "parameters": [
-                "",
-                "\"Ghiocei\""
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::JsCode",
+              "inlineCode": "runtimeScene.setBackgroundColor(100,100,240);\n\nconst variables = runtimeScene.getVariables();\nconst loadedText = variables.get(\"loadedText\");\nconst score = variables.get(\"score\").getValue()\n\nloadedText.concatenate(\",\" + score);\n",
+              "parameterObjects": "",
+              "useStrict": true,
+              "eventsSheetExpanded": false
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarGlobalTxt"
+                  },
+                  "parameters": [
+                    "gameResult",
+                    "=",
+                    "VariableString(loadedText)"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "FileSystem::SaveStringToFileSync"
+                  },
+                  "parameters": [
+                    "VariableString(loadedText)",
+                    "FileSystem::ExecutablePath() + \"rezultat.csv\"",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "PushScene"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Ghiocei\""
+                  ],
+                  "subInstructions": []
+                }
               ],
-              "subInstructions": []
+              "events": []
             }
-          ],
-          "events": []
+          ]
         }
       ],
       "layers": [
@@ -13393,6 +13597,39 @@
                 }
               ],
               "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarScene"
+                  },
+                  "parameters": [
+                    "score",
+                    "=",
+                    "3"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarSceneTxt"
+                  },
+                  "parameters": [
+                    "loadedText",
+                    "=",
+                    "GlobalVariableString(gameResult)"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
             }
           ]
         },
@@ -13481,6 +13718,18 @@
               "parameters": [
                 "",
                 "\"feedback-audio\""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarScene"
+              },
+              "parameters": [
+                "score",
+                "-",
+                "1"
               ],
               "subInstructions": []
             }
@@ -13572,6 +13821,18 @@
               "parameters": [
                 "",
                 "\"feedback-audio\""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarScene"
+              },
+              "parameters": [
+                "score",
+                "-",
+                "1"
               ],
               "subInstructions": []
             }
@@ -13709,20 +13970,70 @@
               "subInstructions": []
             }
           ],
-          "actions": [
+          "actions": [],
+          "events": [
             {
-              "type": {
-                "inverted": false,
-                "value": "PushScene"
-              },
-              "parameters": [
-                "",
-                "\"MomentsOfTheDay\""
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::JsCode",
+              "inlineCode": "runtimeScene.setBackgroundColor(100,100,240);\n\nconst variables = runtimeScene.getVariables();\nconst loadedText = variables.get(\"loadedText\");\nconst score = variables.get(\"score\").getValue()\n\nloadedText.concatenate(\",\" + score);",
+              "parameterObjects": "",
+              "useStrict": true,
+              "eventsSheetExpanded": false
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarGlobalTxt"
+                  },
+                  "parameters": [
+                    "gameResult",
+                    "=",
+                    "VariableString(loadedText)"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "FileSystem::SaveStringToFileSync"
+                  },
+                  "parameters": [
+                    "VariableString(loadedText)",
+                    "FileSystem::ExecutablePath() + \"rezultat.csv\"",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "PushScene"
+                  },
+                  "parameters": [
+                    "",
+                    "\"MomentsOfTheDay\""
+                  ],
+                  "subInstructions": []
+                }
               ],
-              "subInstructions": []
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [],
+              "events": []
             }
-          ],
-          "events": []
+          ]
         }
       ],
       "layers": [
@@ -15180,6 +15491,39 @@
                 }
               ],
               "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarScene"
+                  },
+                  "parameters": [
+                    "score",
+                    "=",
+                    "3"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarSceneTxt"
+                  },
+                  "parameters": [
+                    "loadedText",
+                    "=",
+                    "GlobalVariableString(gameResult)"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
             }
           ]
         },
@@ -15268,6 +15612,18 @@
               "parameters": [
                 "",
                 "\"feedback-audio\""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarScene"
+              },
+              "parameters": [
+                "score",
+                "-",
+                "1"
               ],
               "subInstructions": []
             }
@@ -15361,6 +15717,18 @@
                 "\"feedback-audio\""
               ],
               "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarScene"
+              },
+              "parameters": [
+                "score",
+                "-",
+                "1"
+              ],
+              "subInstructions": []
             }
           ],
           "events": []
@@ -15450,6 +15818,18 @@
               "parameters": [
                 "",
                 "\"feedback-audio\""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarScene"
+              },
+              "parameters": [
+                "score",
+                "-",
+                "1"
               ],
               "subInstructions": []
             }
@@ -15637,20 +16017,62 @@
               "subInstructions": []
             }
           ],
-          "actions": [
+          "actions": [],
+          "events": [
             {
-              "type": {
-                "inverted": false,
-                "value": "PushScene"
-              },
-              "parameters": [
-                "",
-                "\"SummerRiddle\""
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::JsCode",
+              "inlineCode": "runtimeScene.setBackgroundColor(100,100,240);\n\nconst variables = runtimeScene.getVariables();\nconst loadedText = variables.get(\"loadedText\");\nconst score = variables.get(\"score\").getValue()\n\nloadedText.concatenate(\",\" + score);",
+              "parameterObjects": "",
+              "useStrict": true,
+              "eventsSheetExpanded": false
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarGlobalTxt"
+                  },
+                  "parameters": [
+                    "gameResult",
+                    "=",
+                    "VariableString(loadedText)"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "FileSystem::SaveStringToFileSync"
+                  },
+                  "parameters": [
+                    "VariableString(loadedText)",
+                    "FileSystem::ExecutablePath() + \"rezultat.csv\"",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "PushScene"
+                  },
+                  "parameters": [
+                    "",
+                    "\"SummerRiddle\""
+                  ],
+                  "subInstructions": []
+                }
               ],
-              "subInstructions": []
+              "events": []
             }
-          ],
-          "events": []
+          ]
         }
       ],
       "layers": [
@@ -26257,6 +26679,39 @@
                 }
               ],
               "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarScene"
+                  },
+                  "parameters": [
+                    "score",
+                    "=",
+                    "3"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarSceneTxt"
+                  },
+                  "parameters": [
+                    "loadedText",
+                    "=",
+                    "GlobalVariableString(gameResult)"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
             }
           ]
         },
@@ -26464,6 +26919,18 @@
                 "\"feedback-audio\""
               ],
               "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarScene"
+              },
+              "parameters": [
+                "score",
+                "-",
+                "1"
+              ],
+              "subInstructions": []
             }
           ],
           "events": []
@@ -26652,20 +27119,62 @@
               "subInstructions": []
             }
           ],
-          "actions": [
+          "actions": [],
+          "events": [
             {
-              "type": {
-                "inverted": false,
-                "value": "PushScene"
-              },
-              "parameters": [
-                "",
-                "\"IntroToForest\""
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::JsCode",
+              "inlineCode": "runtimeScene.setBackgroundColor(100,100,240);\n\nconst variables = runtimeScene.getVariables();\nconst loadedText = variables.get(\"loadedText\");\nconst score = variables.get(\"score\").getValue()\n\nloadedText.concatenate(\",\" + score);",
+              "parameterObjects": "",
+              "useStrict": true,
+              "eventsSheetExpanded": false
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarGlobalTxt"
+                  },
+                  "parameters": [
+                    "gameResult",
+                    "=",
+                    "VariableString(loadedText)"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "FileSystem::SaveStringToFileSync"
+                  },
+                  "parameters": [
+                    "VariableString(loadedText)",
+                    "FileSystem::ExecutablePath() + \"rezultat.csv\"",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "PushScene"
+                  },
+                  "parameters": [
+                    "",
+                    "\"IntroToForest\""
+                  ],
+                  "subInstructions": []
+                }
               ],
-              "subInstructions": []
+              "events": []
             }
-          ],
-          "events": []
+          ]
         }
       ],
       "layers": [
@@ -27788,32 +28297,6 @@
                 "HitBox"
               ],
               "subInstructions": []
-            },
-            {
-              "type": {
-                "inverted": false,
-                "value": "Create"
-              },
-              "parameters": [
-                "",
-                "Character_1",
-                "HitBox.X()",
-                "HitBox.Y()",
-                ""
-              ],
-              "subInstructions": []
-            },
-            {
-              "type": {
-                "inverted": false,
-                "value": "ChangeScale"
-              },
-              "parameters": [
-                "Character_1",
-                "/",
-                "2"
-              ],
-              "subInstructions": []
             }
           ],
           "events": [
@@ -27835,7 +28318,34 @@
                   "subInstructions": []
                 }
               ],
-              "actions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "Create"
+                  },
+                  "parameters": [
+                    "",
+                    "Character_1",
+                    "HitBox.X()",
+                    "HitBox.Y()",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ChangeScale"
+                  },
+                  "parameters": [
+                    "Character_1",
+                    "/",
+                    "2"
+                  ],
+                  "subInstructions": []
+                }
+              ],
               "events": []
             },
             {
@@ -28149,6 +28659,39 @@
                 }
               ],
               "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarScene"
+                  },
+                  "parameters": [
+                    "score",
+                    "=",
+                    "3"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarSceneTxt"
+                  },
+                  "parameters": [
+                    "loadedText",
+                    "=",
+                    "GlobalVariableString(gameResult)"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
             }
           ]
         },
@@ -28170,20 +28713,62 @@
               "subInstructions": []
             }
           ],
-          "actions": [
+          "actions": [],
+          "events": [
             {
-              "type": {
-                "inverted": false,
-                "value": "PushScene"
-              },
-              "parameters": [
-                "",
-                "\"GoodOrBadForest\""
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::JsCode",
+              "inlineCode": "runtimeScene.setBackgroundColor(100,100,240);\n\nconst variables = runtimeScene.getVariables();\nconst loadedText = variables.get(\"loadedText\");\nconst score = variables.get(\"score\").getValue()\n\nloadedText.concatenate(\",\" + score);",
+              "parameterObjects": "",
+              "useStrict": true,
+              "eventsSheetExpanded": false
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarGlobalTxt"
+                  },
+                  "parameters": [
+                    "gameResult",
+                    "=",
+                    "VariableString(loadedText)"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "FileSystem::SaveStringToFileSync"
+                  },
+                  "parameters": [
+                    "VariableString(loadedText)",
+                    "FileSystem::ExecutablePath() + \"rezultat.csv\"",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "PushScene"
+                  },
+                  "parameters": [
+                    "",
+                    "\"GoodOrBadForest\""
+                  ],
+                  "subInstructions": []
+                }
               ],
-              "subInstructions": []
+              "events": []
             }
-          ],
-          "events": []
+          ]
         }
       ],
       "layers": [
@@ -28924,6 +29509,39 @@
                 }
               ],
               "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarScene"
+                  },
+                  "parameters": [
+                    "score",
+                    "=",
+                    "3"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarSceneTxt"
+                  },
+                  "parameters": [
+                    "loadedText",
+                    "=",
+                    "GlobalVariableString(gameResult)"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
             }
           ]
         },
@@ -29012,6 +29630,18 @@
               "parameters": [
                 "",
                 "\"feedback-audio\""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarScene"
+              },
+              "parameters": [
+                "score",
+                "-",
+                "1"
               ],
               "subInstructions": []
             }
@@ -29149,20 +29779,62 @@
               "subInstructions": []
             }
           ],
-          "actions": [
+          "actions": [],
+          "events": [
             {
-              "type": {
-                "inverted": false,
-                "value": "PushScene"
-              },
-              "parameters": [
-                "",
-                "\"Squirrels\""
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::JsCode",
+              "inlineCode": "runtimeScene.setBackgroundColor(100,100,240);\n\nconst variables = runtimeScene.getVariables();\nconst loadedText = variables.get(\"loadedText\");\nconst score = variables.get(\"score\").getValue()\n\nloadedText.concatenate(\",\" + score);",
+              "parameterObjects": "",
+              "useStrict": true,
+              "eventsSheetExpanded": false
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarGlobalTxt"
+                  },
+                  "parameters": [
+                    "gameResult",
+                    "=",
+                    "VariableString(loadedText)"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "FileSystem::SaveStringToFileSync"
+                  },
+                  "parameters": [
+                    "VariableString(loadedText)",
+                    "FileSystem::ExecutablePath() + \"rezultat.csv\"",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "PushScene"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Squirrels\""
+                  ],
+                  "subInstructions": []
+                }
               ],
-              "subInstructions": []
+              "events": []
             }
-          ],
-          "events": []
+          ]
         }
       ],
       "layers": [
@@ -30403,6 +31075,39 @@
                 }
               ],
               "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarScene"
+                  },
+                  "parameters": [
+                    "score",
+                    "=",
+                    "3"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarSceneTxt"
+                  },
+                  "parameters": [
+                    "loadedText",
+                    "=",
+                    "GlobalVariableString(gameResult)"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
             }
           ]
         },
@@ -30876,6 +31581,18 @@
                 "0"
               ],
               "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarScene"
+              },
+              "parameters": [
+                "score",
+                "-",
+                "1"
+              ],
+              "subInstructions": []
             }
           ],
           "events": []
@@ -30951,20 +31668,62 @@
               "subInstructions": []
             }
           ],
-          "actions": [
+          "actions": [],
+          "events": [
             {
-              "type": {
-                "inverted": false,
-                "value": "PushScene"
-              },
-              "parameters": [
-                "",
-                "\"LookAtTheStars\""
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::JsCode",
+              "inlineCode": "runtimeScene.setBackgroundColor(100,100,240);\n\nconst variables = runtimeScene.getVariables();\nconst loadedText = variables.get(\"loadedText\");\nconst score = variables.get(\"score\").getValue()\n\nloadedText.concatenate(\",\" + score);",
+              "parameterObjects": "",
+              "useStrict": true,
+              "eventsSheetExpanded": false
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarGlobalTxt"
+                  },
+                  "parameters": [
+                    "gameResult",
+                    "=",
+                    "VariableString(loadedText)"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "FileSystem::SaveStringToFileSync"
+                  },
+                  "parameters": [
+                    "VariableString(loadedText)",
+                    "FileSystem::ExecutablePath() + \"rezultat.csv\"",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "PushScene"
+                  },
+                  "parameters": [
+                    "",
+                    "\"LookAtTheStars\""
+                  ],
+                  "subInstructions": []
+                }
               ],
-              "subInstructions": []
+              "events": []
             }
-          ],
-          "events": []
+          ]
         }
       ],
       "layers": [
@@ -31032,8 +31791,8 @@
           "name": "HitBox",
           "persistentUuid": "c4f15544-4cb0-4556-b615-6f82737deae8",
           "width": 337,
-          "x": 2174,
-          "y": 1043,
+          "x": 2146,
+          "y": 1048,
           "zOrder": 2,
           "numberProperties": [],
           "stringProperties": [],
@@ -31906,6 +32665,39 @@
                 }
               ],
               "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarScene"
+                  },
+                  "parameters": [
+                    "score",
+                    "=",
+                    "3"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarSceneTxt"
+                  },
+                  "parameters": [
+                    "loadedText",
+                    "=",
+                    "GlobalVariableString(gameResult)"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
             }
           ]
         },
@@ -32127,6 +32919,18 @@
                     "1"
                   ],
                   "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarScene"
+                  },
+                  "parameters": [
+                    "score",
+                    "-",
+                    "1"
+                  ],
+                  "subInstructions": []
                 }
               ],
               "events": []
@@ -32265,20 +33069,62 @@
               "subInstructions": []
             }
           ],
-          "actions": [
+          "actions": [],
+          "events": [
             {
-              "type": {
-                "inverted": false,
-                "value": "PushScene"
-              },
-              "parameters": [
-                "",
-                "\"Outro\""
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::JsCode",
+              "inlineCode": "runtimeScene.setBackgroundColor(100,100,240);\n\nconst variables = runtimeScene.getVariables();\nconst loadedText = variables.get(\"loadedText\");\nconst score = variables.get(\"score\").getValue()\n\nloadedText.concatenate(\",\" + score);",
+              "parameterObjects": "",
+              "useStrict": true,
+              "eventsSheetExpanded": false
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarGlobalTxt"
+                  },
+                  "parameters": [
+                    "gameResult",
+                    "=",
+                    "VariableString(loadedText)"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "FileSystem::SaveStringToFileSync"
+                  },
+                  "parameters": [
+                    "VariableString(loadedText)",
+                    "FileSystem::ExecutablePath() + \"rezultat.csv\"",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "PushScene"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Outro\""
+                  ],
+                  "subInstructions": []
+                }
               ],
-              "subInstructions": []
+              "events": []
             }
-          ],
-          "events": []
+          ]
         }
       ],
       "layers": [
